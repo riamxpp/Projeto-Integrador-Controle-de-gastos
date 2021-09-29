@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head> 
+  <%- include('../partials/head.ejs'); -%>
+  <link rel="stylesheet" type="text/css" href="css/cadastro.css">
+  <title>Cadastre-se</title>
+</head>
+<body>
+    <form action="/capturaDados"  method="POST">
+      <div class="mb-3">
+        <label for="formGroupExampleInput" class="form-label">Nome</label>
+        <input type="text" name="nome" class="form-control" id="formGroupExampleInput" placeholder="Nome">
+      </div>
+      <div class="mb-3">
+        <label for="formGroupExampleInput2" class="form-label">Email</label>
+        <input type="text" name="email" class="form-control" id="formGroupExampleInput2" placeholder="Email">
+      </div>
+      <div class="mb-3">
+        <label for="formGroupExampleInput2" class="form-label">Senha</label>
+        <input type="password" name="senha" class="form-control" placeholder="Senha">
+      </div>
+      </div>
+      <div class="d-grid gap-2 d-md-block">
+        <button class="btn btn-primary"  type="submit">Cadastrar</button>
+      </div>
+      <a href="/login">Já possui conta ? Faça login</a>
+    </form>
+</body>
+</html>
+

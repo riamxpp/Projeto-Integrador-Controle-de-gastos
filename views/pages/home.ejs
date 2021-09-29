@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <title>Projeto Integrador</title>
+    <%- include('../partials/head.ejs'); -%>
+    <link rel="stylesheet" type="text/css" href="css/home.css">
+</head>
+<!-- <head>
+    <%- include('../partials/head.ejs'); -%>
+    <link rel="stylesheet" href="/public/css/home.css">
+    <title>Home</title>
+</head> -->
+<body>
+    <div class="estrutura">
+        <header class="header">
+            <h1>Controle de gastos</h1>
+        </header>
+        <main class="content">
+            <!--  <div class="formulario__salario"></div>-->
+               <span id="dinheiro__total">$0</span>
+                <!--Inputs informar salario e retirar dinheiro-->
+                <input type="number" min="0" placeholder="Informe seu salario" id="informar__dinheiro">
+                <button id="botao__enviar" onclick="mostraTotal()">Enviar</button>  
+
+                <!--Inputs informar dispesa e  valor-->
+                <input type="text" placeholder="Dispesa mensal (nome)" id="dispesas__mensais">
+                <input type="number" min="0" placeholder="Valor da dispesa" id="valor__dispesa-mensal">
+                <button onclick="adicionarDispesa()" id="botao__dispesa">Enviar</button>
+                <p class="text__gastos-naoEssenciais">Ver gastos não essenciais</p>
+                <p class="text__dispesas">Ver despesas mensais</p>
+            
+                <input type="text" placeholder="Gastos não essenciais" id="gastos__nao-essenciais">
+                <input type="number" min="0" placeholder="Valor do gasto" id="remover__dinheiro">
+                <button id="botao__retirar-dinheiro" onclick="adicionarDispesaNaoEssencial()">Enviar</button>
+        
+         
+        </main>
+
+        <footer class="footer">
+            <p>&copy; Riam stefeson e Andre brendo</p>
+            <div id="modal__gastos-mensais-fundo" class="modal__container">
+                <div class="modal__gastos-mensais-frente">
+                    <button class="botao__gatos">x</button>
+                    <h3>Gastos mensais</h3>
+                    <ul id="lista">
+                    </ul>
+                </div>
+            </div>
+    
+            <div id="modal__gastos-nao-essenciais" class="modal__container-2">
+                <div class="modal__gastosNao-essencias-frente">
+                    <button class="botao__nao-essenciais">x</button>
+                    <h3>Gastos não essenciais</h3>
+                    <ul id="lista__2">
+    
+                    </ul>
+                </div>
+            </div>
+        </footer>
+    </div>
+    <!-- <script src="js/arquivo.js"></script> -->
+</body>
+</html>

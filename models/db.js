@@ -33,18 +33,22 @@ class Acessos {
         await User.create(user)
     }
     async verifEmail(value){ 
-        await User.findOne({ 
-            where: {
-                email: value
-            }
-        }).then(res => {
-            if(res == null){
-                console.log('entrou no if');
-                return false
-            }
-            // console.log(res);
-            return true
-        })
+        try {
+            const res = await User.findOne({ 
+                where: {
+                    email: value
+                }
+            });
+                if(res === null){
+                    console.log(res);
+                    return false
+                }
+                console.log(res, 'res de fora');
+                // console.log(res);
+                return true
+        }catch(err) {
+            console.log('Erro ', err)
+        }
     }
     async loginEmail(email){
         const user = await User.findOne({

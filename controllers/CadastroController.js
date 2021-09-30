@@ -10,14 +10,17 @@ class CadastroController {
             email: req.body.email,
             senha: req.body.senha
         }
+        // Acesso.verifEmail(user.email).then(res => {
+        //     console.log(res, ' log do controller');
+        // })
         // Acesso.verifEmail(user.email);
-        if(Acesso.verifEmail(user.email) == true){
+        if(await Acesso.verifEmail(user.email)){
             return res.send('Email já cadastrado!!');
         }
+        Acesso.createUsers(user);
         return res.send(user)
         
         // console.log('aq');
-        // await Acesso.createUsers(user);
         // if(!Acesso.verifEmail(email)){
         //     return res.render('pages/cadastro', {error: 'Email já cadastrado.'});
         // };

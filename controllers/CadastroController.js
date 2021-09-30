@@ -10,19 +10,18 @@ class CadastroController {
             email: req.body.email,
             senha: req.body.senha
         }
-        // 
-        // console.log(Acesso.verifEmail(user.email));
-        // console.log(user.email + ' 2');
-        if(!Acesso.verifEmail(user.email)){
-            return res.render('pages/cadastro', {error: 'Email já cadastrado.'});
-        };
+        // Acesso.verifEmail(user.email);
+        if(Acesso.verifEmail(user.email) == true){
+            return res.send('Email já cadastrado!!');
+        }
+        return res.send(user)
+        
+        // console.log('aq');
+        // await Acesso.createUsers(user);
+        // if(!Acesso.verifEmail(email)){
+        //     return res.render('pages/cadastro', {error: 'Email já cadastrado.'});
+        // };
 
-        // if(!Acesso.verifSenha(senha))
-        //     return res.render('pages/cadastro')
-        // res.send(user);
-
-        Acesso.createUsers(user)
-        return res.redirect('/home')
         }
 }
 

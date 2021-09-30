@@ -1,25 +1,25 @@
-const Sequelize = require('sequelize');
+const { Sequelize, DataTypes } = require('sequelize');
 const conexao = require('./Conexao');
 // const { QueryTypes } = require('sequelize');
 
 const User = conexao.define('users', {
     id: {
-        type: Sequelize.INTEGER,
+        type: DataTypes.INTEGER,
         autoIncrement: true, //auto incremente, ex: se o usuario passado foi 1 o proximo é 2
         allowNull: false, //não pode ser null
         primaryKey: true //chave primaria
     },
     nome: {
-        type: Sequelize.STRING,
+        type: DataTypes.STRING,
         allowNull: false
     },
     email: {
-        type: Sequelize.STRING,
+        type: DataTypes.STRING,
         allowNull: false,
         unique: true
     },
     senha: {
-        type: Sequelize.STRING,
+        type: DataTypes.STRING,
         allowNull: false,
     }
 });
@@ -33,33 +33,19 @@ class Acessos {
         await User.create(user)
     }
     async verifEmail(value){ 
-        const user = await User.findOne({ 
+        await User.findOne({ 
             where: {
                 email: value
             }
+        }).then(res => {
+            if(res == null){
+                console.log('entrou no if');
+                return false
+            }
+            // console.log(res);
+            return true
         })
-        // console.log(user);
-        if(!user){
-            // console.log('email n existe');
-            return true;
-        }
-            
-        return false;
-        // console.log(user.dataValues.email);
     }
-    // async verifSenha(senha){
-    //     const user = await conexao.findOne({
-    //         where: {
-    //             senha: senha
-    //         }
-    //     })
-    //     // if(user === null) return true;
-
-    //     if(user === null) 
-    //         return true
-       
-    //     return user
-    // }
     async loginEmail(email){
         const user = await User.findOne({
             where: {

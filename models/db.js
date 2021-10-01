@@ -23,10 +23,25 @@ const User = conexao.define('users', {
         allowNull: false,
     }
 });
+
+const Receitas = conexao.define('receitas',{
+    id: {
+        type: DataTypes.INTEGER,
+        autoIncrement: true,
+        allowNull: false,
+        primaryKey: true
+    },
+    valor: {
+        type: DataTypes.INTEGER,
+        allowNull: false
+    },
+    categoria: {
+        type: DataTypes.STRING,
+        allowNull: true
+    }
+});
 //Caso a tabela não exista no meu bd o sync() irá criar.
 // User.sync();
-
-// user instanceof User
 
 class Acessos { 
     async createUsers(user){

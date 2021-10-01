@@ -2,7 +2,10 @@ const Acesso = require('../models/db');
 
 class CadastroController {
     cadastro(req, res){
-        res.render('pages/cadastro');
+        if(req.session.logado)
+            res.render('pages/home');
+        else 
+            res.render('pages/cadastro');
     }
     async captura(req, res){
         let user = {
@@ -10,21 +13,15 @@ class CadastroController {
             email: req.body.email,
             senha: req.body.senha
         }
-        // Acesso.verifEmail(user.email).then(res => {
-        //     console.log(res, ' log do controller');
-        // })
-        // Acesso.verifEmail(user.email);
+        if(req.body.nome === '' && req.body.email === '' && req.body.senha === ''){
+                return res.render('pages/cadastro', { erro: 'Nenhum campo pode ficar vazio!'});
+        }
         if(await Acesso.verifEmail(user.email)){
             return res.render('pages/cadastro', { erro: 'Email já cadastrado' });
         }
         Acesso.createUsers(user);
-        return res.send(user)
-        
-        // console.log('aq');
-        // if(!Acesso.verifEmail(email)){
-        //     return res.render('pages/cadastro', {error: 'Email já cadastrado.'});
-        // };
-
+        req.session.logado = true
+        return res.redirect('/home', { captura: this.captura})
         }
 }
 

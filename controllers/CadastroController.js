@@ -15,7 +15,7 @@ class CadastroController {
         // })
         // Acesso.verifEmail(user.email);
         if(await Acesso.verifEmail(user.email)){
-            return res.send('Email já cadastrado!!');
+            return res.render('pages/cadastro', { erro: 'Email já cadastrado' });
         }
         Acesso.createUsers(user);
         return res.send(user)

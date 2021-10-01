@@ -40,27 +40,31 @@ class Acessos {
                 }
             });
                 if(res === null){
-                    console.log(res);
                     return false
                 }
-                console.log(res, 'res de fora');
-                // console.log(res);
+
                 return true
         }catch(err) {
             console.log('Erro ', err)
         }
     }
-    async loginEmail(email){
-        const user = await User.findOne({
-            where: {
-                email: email
+    async verifSenhaLogin(email, senha){
+        try {
+            const id = await User.findAll({
+                where: {
+                    email: email,
+                    senha: senha
+                }
+            })
+            // console.log(id, ' aqui');
+            if(Object.keys(id).length === 0){
+                return false
             }
-        })
 
-        if(user === null) 
-            return true
-        
-        return false
+            return true 
+        }catch(err) {   
+            console.log(err);
+        }
     }
 }
 

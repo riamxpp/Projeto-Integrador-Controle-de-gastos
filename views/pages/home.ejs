@@ -8,56 +8,53 @@
 <!-- <head>
     <%- include('../partials/head.ejs'); -%>
     <link rel="stylesheet" href="/public/css/home.css">
-    <title>Home</title>
+    <title>Home</title> 
 </head> -->
 <body>
-    <div class="estrutura">
-        <header class="header">
+    <body>
+        <div class="estrutura">
+          <header class="header">
             <h1>Controle de gastos</h1>
-        </header>
-        <main class="content">
-            <!--  <div class="formulario__salario"></div>-->
-               <span id="dinheiro__total">$0</span>
-                <!--Inputs informar salario e retirar dinheiro-->
-                <input type="number" min="0" placeholder="Informe seu salario" id="informar__dinheiro">
-                <button id="botao__enviar" onclick="mostraTotal()">Enviar</button>  
-
-                <!--Inputs informar dispesa e  valor-->
-                <input type="text" placeholder="Dispesa mensal (nome)" id="dispesas__mensais">
-                <input type="number" min="0" placeholder="Valor da dispesa" id="valor__dispesa-mensal">
-                <button onclick="adicionarDispesa()" id="botao__dispesa">Enviar</button>
-                <p class="text__gastos-naoEssenciais">Ver gastos não essenciais</p>
-                <p class="text__dispesas">Ver despesas mensais</p>
-            
-                <input type="text" placeholder="Gastos não essenciais" id="gastos__nao-essenciais">
-                <input type="number" min="0" placeholder="Valor do gasto" id="remover__dinheiro">
-                <button id="botao__retirar-dinheiro" onclick="adicionarDispesaNaoEssencial()">Enviar</button>
-        
-         
-        </main>
-
-        <footer class="footer">
-            <p>&copy; Riam stefeson e Andre brendo</p>
-            <div id="modal__gastos-mensais-fundo" class="modal__container">
-                <div class="modal__gastos-mensais-frente">
-                    <button class="botao__gatos">x</button>
-                    <h3>Gastos mensais</h3>
-                    <ul id="lista">
-                    </ul>
-                </div>
-            </div>
+          </header>
     
-            <div id="modal__gastos-nao-essenciais" class="modal__container-2">
-                <div class="modal__gastosNao-essencias-frente">
-                    <button class="botao__nao-essenciais">x</button>
-                    <h3>Gastos não essenciais</h3>
-                    <ul id="lista__2">
-    
-                    </ul>
-                </div>
+          <main class="content">
+            <h2>Projeto integrador</h2>
+            <div class="informacoes">
+              <span>User: </span><br>
+              <span>id: </span><br>
+              <span>R$: </span>
             </div>
-        </footer>
-    </div>
-    <!-- <script src="js/arquivo.js"></script> -->
-</body>
-</html>
+            <form class="formulario">
+    
+              <div class="caixa__valor-receita">
+                <span>Receitas </span>
+                <label for="valor__receita">Valor: </label>
+                <input type="number" min="0" id="valor__receita">
+                <button type="button" class="btn btn-primary">Enviar</button>
+              </div>
+              <div class="caixa__categoria-receita">
+                <label for="categoria__receita">Categoria: </label>
+                <input type="text" class="categoria__receita" id="categoria__receita">
+                <button type="button" class="btn btn-primary">Enviar</button>
+              </div>
+              <div class="caixa__valor-dispesa">
+                <span>Dispesas</span>
+                <label for="dispesas__valor">Valor: </label>
+                <input type="number" min="0" class="dispesas__valor" id="dispesas__valor">
+                <button type="button" class="btn btn-primary">Enviar</button>
+              </div> 
+              <div class="caixa__categoria-dispesa">
+                <label for="dispesas__categoria">Categoria: </label>
+                <input type="number" min="0" class="dispesas__categoria" id="dispesas__categoria">
+                <button type="button" class="btn btn-primary">Enviar</button>
+              </div>
+            </form>
+          </main>
+    
+          <footer class="footer">
+              <p>&copy; Riam stefeson e Andre brendo</p>
+          </footer>
+        </div>
+        <!-- <script src="js/arquivo.js"></script> -->
+    </body>
+    </html>

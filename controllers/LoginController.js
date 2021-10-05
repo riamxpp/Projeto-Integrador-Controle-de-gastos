@@ -20,8 +20,19 @@ class LoginControllers {
             return res.render('pages/login', { erro: 'Email ou senha não correspondem!'});
         }
       
-        req.session.logado = true
+        const nome = await Acesso.retornandoUser(user.email)
+        .then(resolver => resolver);
+        const id = await Acesso.retornandoID(user.email)
+        .then(resolver => resolver);
+        const total = await Acesso.retornandoTotal(id)
+        .then(resolver => resolver);
 
+        req.session.logado = true
+        req.session.dadosUser = {
+            nome: nome,
+            id: id,
+            total: total
+        }
         return res.redirect('/home');
     }
     logout(req, res){ 

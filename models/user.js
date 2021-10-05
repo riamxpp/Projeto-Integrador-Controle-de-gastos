@@ -1,5 +1,6 @@
 const conexao = require('./Conexao');
 const { Sequelize, DataTypes } = require('sequelize');
+const Receitas = require('./receitas');
 
 const User = conexao.define('users', {
   id: {
@@ -22,5 +23,12 @@ const User = conexao.define('users', {
       allowNull: false,
   }
 });
+//falando que minhas Receitas percente a um User
+// Esse relacionamento vai criar um campo de User na Receitas.
+Receitas.belongsTo(User)
 
+User.hasMany(Receitas, {
+    constraint: true,
+    foreignKey: 'userId'
+})
 module.exports = User;

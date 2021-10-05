@@ -1,10 +1,8 @@
 const User = require('./user');
 const Receitas = require('./receitas');
 
-
-//Caso a tabela não exista no meu bd o sync() irá criar.
-// User.sync();
-// Receitas.sync();
+// User.sync({ force: true });
+// Receitas.sync({force:true})
 
 class Acesso { 
     async createUsers(user){

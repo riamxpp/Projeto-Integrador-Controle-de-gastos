@@ -1,3 +1,4 @@
+const { addListener } = require('nodemon');
 const Acesso = require('../models/db');
 
 class CadastroController {
@@ -36,11 +37,15 @@ class CadastroController {
 
         const total = await Acesso.retornandoTotal(id)
         .then(resolver => resolver);
-        console.log('No cadastro controller id '+ id);
-        console.log('No cadastro controller '+ total);
 
         req.session.logado = true
-        return res.redirect('/home')
+        req.session.dadosUser = {
+            nome: req.body.nome,
+            id: id,
+            total: total
+        }
+        // res.redirect('/home')
+        res.redirect('/home');
     }
 }
 

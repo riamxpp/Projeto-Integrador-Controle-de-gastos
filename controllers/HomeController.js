@@ -1,9 +1,11 @@
+const Acesso = require('../models/db');
 class HomeController {
     home(req, res){
-        if(req.session.logado)
+        if(req.session.logado){
             res.render('pages/home');
-        else 
+        }else {
             res.redirect('/login');
+        }
     }
 }
 

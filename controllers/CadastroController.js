@@ -14,15 +14,34 @@ class CadastroController {
             senha: req.body.senha
         }
         if(req.body.nome === '' && req.body.email === '' && req.body.senha === ''){
-                return res.render('pages/cadastro', { erro: 'Nenhum campo pode ficar vazio!'});
+                return res.render('pages/cadastro', { erro: 'Preencha os campos correntamente!'});
         }
         if(await Acesso.verifEmail(user.email)){
             return res.render('pages/cadastro', { erro: 'Email já cadastrado' });
         }
-        Acesso.createUsers(user);
-        req.session.logado = true
-        return res.redirect('/home', { captura: this.captura})
+        await Acesso.createUsers(user);
+
+        const id = await Acesso.retornandoID(user.email)
+        .then(resolver => resolver)
+
+        let receitaAndDispesa = {
+            valorReceita: 0,
+            categoriaReceita: '',
+            valorDispesa: 0,
+            categoriaDispesa: '',
+            userId: id,
         }
+        
+        await Acesso.createReceitas(receitaAndDispesa);
+
+        const total = await Acesso.retornandoTotal(id)
+        .then(resolver => resolver);
+        console.log('No cadastro controller id '+ id);
+        console.log('No cadastro controller '+ total);
+
+        req.session.logado = true
+        return res.redirect('/home')
+    }
 }
 
 module.exports = new CadastroController()

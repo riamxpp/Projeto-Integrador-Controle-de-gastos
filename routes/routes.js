@@ -6,13 +6,15 @@ const Home = require('../controllers/HomeController');
 
 const routes = new Router();
 
+//cadastro
 routes.get('/cadastro', Cadastro.cadastro);
 routes.post('/capturaDados', Cadastro.captura);
+//login
 routes.get('/', Login.login); 
 routes.post('/dadosLogin', Login.captura);
 routes.get('/login', Login.login);
-routes.get('/home', Home.home);
 routes.get('/logout', Login.logout);
-// routes
+//home
+routes.get('/home', Home.home);
 
 module.exports = routes;

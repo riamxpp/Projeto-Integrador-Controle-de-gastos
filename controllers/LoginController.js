@@ -17,7 +17,7 @@ class LoginControllers {
             return res.render('pages/login', { erro: 'Nenhum campo pode ficar vazio!'});
        }
         if(!await Acesso.verifSenhaLogin(user.email, user.senha)){
-            return res.render('pages/login', { erro: 'Email ou senha não corresponde!'});
+            return res.render('pages/login', { erro: 'Email ou senha não correspondem!'});
         }
       
         req.session.logado = true

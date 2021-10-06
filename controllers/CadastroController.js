@@ -25,21 +25,21 @@ class CadastroController {
         const id = await Acesso.retornandoID(user.email)
         .then(resolver => resolver)
 
-        let receitaAndDispesa = {
-            valorReceita: 0,
-            categoriaReceita: '',
-            valorDispesa: 0,
-            categoriaDispesa: '',
-            userId: id,
-        }
+        // let receitaAndDispesa = {
+        //     valorReceita: 0,
+        //     categoriaReceita: '',
+        //     valorDispesa: 0,
+        //     categoriaDispesa: '',
+        //     userId: id,
+        // }
         
-        await Acesso.createReceitas(receitaAndDispesa);
 
-        const total = await Acesso.retornandoTotal(id)
+        const total = await Acesso.retornandoTotalReceita(id)
         .then(resolver => resolver);
-
+        
         req.session.logado = true
         req.session.dadosUser = {
+            email: req.body.email,
             nome: req.body.nome,
             id: id,
             total: total

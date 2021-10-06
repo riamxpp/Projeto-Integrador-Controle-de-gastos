@@ -24,11 +24,16 @@ class LoginControllers {
         .then(resolver => resolver);
         const id = await Acesso.retornandoID(user.email)
         .then(resolver => resolver);
-        const total = await Acesso.retornandoTotal(id)
+        const totalReceita = await Acesso.retornandoTotalReceita(id)
         .then(resolver => resolver);
+        const totalDispesa = await Acesso.retornandoTotalDispesa(id)
+        .then(resolver => resolver);
+        // console.log('No controller: ', totalDispesa);
+        let total = totalReceita - totalDispesa;
 
         req.session.logado = true
         req.session.dadosUser = {
+            email: user.email,
             nome: nome,
             id: id,
             total: total

@@ -10,9 +10,8 @@
       <header class="header">
         <h1>Controle de gastos</h1>
       </header>
-
       <main class="content">
-        <form method="GET" action="/home" class="formulario">
+        <form action="/dadosUser" method="POST" class="formulario">
           <h2>Projeto integrador</h2>
           <div class="informacoes">
             <span>User: 
@@ -34,20 +33,20 @@
           <div class="caixa__receitas">
             <span>Receitas </span>
             <label for="valor__receita">Valor </label>
-            <input type="number" min="0" id="valor__receita">
-            <button type="button" class="btn btn-primary">Enviar</button><br>
+            <input type="number" name="valorReceita" min="0" id="valor__receita">
+            <button type="submit" class="btn btn-primary">Enviar</button><br>
             <label for="categoria__receita">Categoria </label>
-            <input type="text" class="categoria__receita" id="categoria__receita">
-            <button type="button" class="btn btn-primary">Enviar</button>
+            <input type="text" name="categoriaReceita" class="categoria__receita" id="categoria__receita">
+            <button type="submit" class="btn btn-primary">Enviar</button>
           </div>
           <div class="caixa__dispesas">
             <span>Dispesas</span>
             <label for="dispesas__valor">Valor </label>
-            <input type="number" min="0" class="dispesas__valor" id="dispesas__valor">
-            <button type="button" class="btn btn-primary">Enviar</button><br>
+            <input type="number" name="valorDispesa" min="0" class="dispesas__valor" id="dispesas__valor">
+            <button type="submit" class="btn btn-primary">Enviar</button><br>
             <label for="dispesas__categoria">Categoria </label>
-            <input type="number" min="0" class="dispesas__categoria" id="dispesas__categoria">
-            <button type="button" class="btn btn-primary">Enviar</button>
+            <input type="text" name="categoriaDispesa" min="0" class="dispesas__categoria" id="dispesas__categoria">
+            <button type="submit" class="btn btn-primary">Enviar</button>
             <a href="/logout" class="btn btn-link" id="sair">Sair</a>
           </div>
         </form>

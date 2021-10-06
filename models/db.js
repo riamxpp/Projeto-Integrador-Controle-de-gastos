@@ -1,5 +1,6 @@
 const User = require('./user');
 const Receitas = require('./receitas');
+const _ = require('lodash');
 
 // User.sync({ force: true });
 // Receitas.sync({force:true})
@@ -54,7 +55,7 @@ class Acesso {
 
             return user.dataValues.id
         }catch(erro){
-            console.log('Erro: ' + erro);
+            console.log('Erro: ', erro);
         }
     }
     async retornandoUser(email){
@@ -67,20 +68,62 @@ class Acesso {
 
              return nome.dataValues.nome;
         }catch(erro){
-            console.log('Erro: ' + erro);
+            console.log('Erro: ', erro);
         }
     }
-    async retornandoTotal(id){
+    async retornandoTotalReceita(id){
         try {
-            const total = await Receitas.findOne({
+            const total = await Receitas.findAll({
                 where: {
                     userId: id
                 }
             })
-       
-            return total.dataValues.valorReceita
+            if(total == null){
+                return 0;
+            }
+            const arrayValores = []
+            await _.forEach(total, item => {
+                const valores = {
+                    valorReceita: item.dataValues.valorReceita,
+                }
+                arrayValores.push(valores);
+            });
+
+            let totalReceita = 0
+            await _.forEach(arrayValores, item => {
+                totalReceita += item.valorReceita;
+            })
+          
+            return totalReceita;
         }catch(erro){
-            console.log('Erro: '+ erro);
+            console.log('Erro: ', erro);
+        }
+    }
+    async retornandoTotalDispesa(id){
+        try {
+            const total = await Receitas.findAll({
+                where: {
+                    userId: id
+                }
+            })
+            if(total == null){
+                return 0;
+            }
+            let valoresDispesa = [];
+            _.forEach(total, item => {
+                const valores = {
+                    valorDispesa: item.dataValues.valorDispesa,
+                }
+                valoresDispesa.push(valores);
+            })
+            let totalDispesa = 0
+            _.forEach(valoresDispesa, item => {
+                totalDispesa += item.valorDispesa
+            })
+
+            return totalDispesa;
+        }catch(erro){
+            console.log('Erro: ', erro);
         }
     }
 }

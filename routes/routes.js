@@ -16,5 +16,6 @@ routes.get('/login', Login.login);
 routes.get('/logout', Login.logout);
 //home
 routes.get('/home', Home.home);
+routes.post('/dadosUser', Home.dadosUser);
 
 module.exports = routes;

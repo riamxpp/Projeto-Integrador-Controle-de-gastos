@@ -28,7 +28,7 @@ class LoginControllers {
         .then(resolver => resolver);
         const totalDispesa = await Acesso.retornandoTotalDispesa(id)
         .then(resolver => resolver);
-        // console.log('No controller: ', totalDispesa);
+
         let total = totalReceita - totalDispesa;
 
         req.session.logado = true

@@ -5,9 +5,9 @@ const Receitas = require('./receitas');
 const User = conexao.define('users', {
   id: {
       type: DataTypes.INTEGER,
-      autoIncrement: true, //auto incremente, ex: se o usuario passado foi 1 o proximo é 2
-      allowNull: false, //não pode ser null
-      primaryKey: true //chave primaria
+      autoIncrement: true, 
+      allowNull: false, 
+      primaryKey: true 
   },
   nome: {
       type: DataTypes.STRING,
@@ -23,8 +23,7 @@ const User = conexao.define('users', {
       allowNull: false,
   }
 });
-//falando que minhas Receitas percente a um User
-// Esse relacionamento vai criar um campo de User na Receitas.
+
 Receitas.belongsTo(User)
 
 User.hasMany(Receitas, {

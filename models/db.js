@@ -2,9 +2,6 @@ const User = require('./user');
 const Receitas = require('./receitas');
 const _ = require('lodash');
 
-// User.sync({ force: true });
-// Receitas.sync({force:true})
-
 class Acesso { 
     async createUsers(user){
         await User.create(user);
@@ -125,6 +122,26 @@ class Acesso {
         }catch(erro){
             console.log('Erro: ', erro);
         }
+    }
+    async pegandoDados(id){
+        const dados = await Receitas.findAll({
+            where: {
+                userId: id
+            }
+        })
+        const meusDados = []
+        _.forEach(dados, item => {
+            let valores = {
+                valorReceita: item.dataValues.valorReceita,
+                categoriaReceita: item.dataValues.categoriaReceita,
+                valorDispesa: item.dataValues.valorDispesa,
+                categoriaDispesa: item.dataValues.categoriaDispesa,
+                createdAt: item.dataValues.createdAt
+            }
+            meusDados.push(valores);
+        })
+        
+        return meusDados;
     }
 }
 

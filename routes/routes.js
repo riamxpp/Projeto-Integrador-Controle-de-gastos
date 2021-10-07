@@ -2,7 +2,7 @@ const { Router } = require('express');
 const Cadastro = require('../controllers/CadastroController');
 const Login = require('../controllers/LoginController');
 const Home = require('../controllers/HomeController');
-
+const Historico = require('../controllers/HistoricoController');
 
 const routes = new Router();
 
@@ -17,5 +17,8 @@ routes.get('/logout', Login.logout);
 //home
 routes.get('/home', Home.home);
 routes.post('/dadosUser', Home.dadosUser);
+//historico
+routes.get('/historico', Historico.historico);
+
 
 module.exports = routes;

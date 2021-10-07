@@ -10,19 +10,15 @@ const Receitas = conexao.define('receitas', {
   },
   valorReceita: {
       type: DataTypes.INTEGER,
-      allowNull: false
   },
   categoriaReceita: {
       type: DataTypes.STRING,
-      allowNull: false
   },
   valorDispesa: {
       type: DataTypes.INTEGER,
-      allowNull: false
   },
   categoriaDispesa: {
       type: DataTypes.STRING,
-      allowNull: false
   }
 });
 

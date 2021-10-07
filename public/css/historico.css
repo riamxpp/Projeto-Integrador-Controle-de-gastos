@@ -1,0 +1,42 @@
+body {
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 30px 1fr;
+}
+a {
+  display: inline-block;
+  grid-column: 2;
+  grid-row: 1;
+}
+.container {
+  width: 1200px;
+  min-height: 90vh;
+  max-height: 400vh;
+  background: #a19f9f63;
+  grid-column: 2;
+  grid-row: 2;  
+  justify-content: space-around ;
+  display: flex;
+  flex-wrap: wrap;
+  border-radius: 5px;
+}
+.valores {
+  background-color: #8b8a8a63;
+  padding: 10px;
+  width: 180px;
+  min-height: 160px;
+  max-height: 200px;
+  display: block;
+  position: relative;
+  margin: 5px 0;
+  border-radius: 5px;
+}
+.span__frente {
+  font-weight: bold;
+}
+h6 {
+  display: block;
+  margin: 0;
+}

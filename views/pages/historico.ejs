@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Projeto Integrador</title>
+  <%- include('../partials/head.ejs'); -%>
+  <link rel="stylesheet" type="text/css" href="css/historico.css">
+</head>
+<body>
+  <a href="/home" class="btn btn-link" id="sair">Voltar para home</a>
+  <div class="container">
+    <% dadoTratado.forEach((item, index) => { %>
+      <div class="valores">
+        <h6>Receita</h6>
+        <span class="span__frente"> <%= item.categoriaReceita; %>: </span>
+        <span> <%= item.valorReceita; %>R$</span><br>
+        <h6>Dispesa</h6>
+        <span class="span__frente"> <%= item.categoriaDispesa %>:</span>
+        <span> <%= item.valorDispesa; %>R$ </span><br>
+        <span class="span__frente">Data:</span>
+        <span>  <%= item.createdAt; %></span>
+      </div>
+    <% }) %>
+  </div>
+</body>
+</html>

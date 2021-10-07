@@ -25,15 +25,6 @@ class CadastroController {
         const id = await Acesso.retornandoID(user.email)
         .then(resolver => resolver)
 
-        // let receitaAndDispesa = {
-        //     valorReceita: 0,
-        //     categoriaReceita: '',
-        //     valorDispesa: 0,
-        //     categoriaDispesa: '',
-        //     userId: id,
-        // }
-        
-
         const total = await Acesso.retornandoTotalReceita(id)
         .then(resolver => resolver);
         
@@ -44,7 +35,7 @@ class CadastroController {
             id: id,
             total: total
         }
-        // res.redirect('/home')
+       
         res.redirect('/home');
     }
 }

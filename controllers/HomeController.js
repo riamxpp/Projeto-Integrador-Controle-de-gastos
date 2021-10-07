@@ -23,6 +23,13 @@ class HomeController {
 
             const id = await Acesso.retornandoID(infoUsers.email)
             .then(resolver => resolver)
+            if(req.body.categoriaDispesa === '' && req.body.valorDispesa === ''){
+                req.body.categoriaDispesa = 'Sem dispesa'
+                req.body.valorDispesa = 0
+            }else if(req.body.categoriaReceita === '' && req.body.valorReceita === ''){
+                req.body.categoriaReceita = 'Sem receita'
+                req.body.valorReceita = 0
+            }
             const receitaAndDispesa = {
                 valorReceita: req.body.valorReceita,
                 categoriaReceita: req.body.categoriaReceita,
